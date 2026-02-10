@@ -91,10 +91,12 @@ export class DatabaseService {
 
   async signInWithGithub() {
     try {
+      // Use clean window.location.origin to match Supabase/GitHub settings exactly
+      const redirectUrl = window.location.origin.replace(/\/$/, '');
       const { data, error } = await this.supabase.auth.signInWithOAuth({
         provider: 'github',
         options: {
-          redirectTo: window.location.origin,
+          redirectTo: redirectUrl,
           scopes: 'repo read:user user:email'
         }
       });
