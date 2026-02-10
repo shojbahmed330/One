@@ -89,6 +89,21 @@ export class DatabaseService {
     }
   }
 
+  async signInWithGithub() {
+    try {
+      const { data, error } = await this.supabase.auth.signInWithOAuth({
+        provider: 'github',
+        options: {
+          redirectTo: window.location.origin,
+          scopes: 'repo read:user user:email'
+        }
+      });
+      return { data, error };
+    } catch (error: any) {
+      throw error;
+    }
+  }
+
   async resetPassword(email: string) {
     const { data, error } = await this.supabase.auth.resetPasswordForEmail(email.trim().toLowerCase(), {
       redirectTo: window.location.origin + '/profile',
