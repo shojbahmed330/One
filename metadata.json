@@ -1,0 +1,9 @@
+{
+  "name": "10 tarik rat 2 ta 42 min, OneClick Studio Native Builder",
+  "description": "AI-powered system for building hybrid Android apps with full hardware access.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
